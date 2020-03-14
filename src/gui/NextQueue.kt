@@ -1,19 +1,20 @@
 package gui
 
 import CELL_SIZE
+import MINI_PIECE_CELL_SIZE
 import NEXT_QUEUE_SIZE
-import tetris.Piece
+import tetris.Board
 import tetris.RotationState
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
-import java.util.*
 import javax.swing.JPanel
 
-class NextQueue(private val nextQueue: ArrayDeque<Piece>) : JPanel() {
+class NextQueue(board: Board) : JPanel() {
+    private val nextQueue = board.nextQueue
+
     init {
         preferredSize = Dimension(CELL_SIZE * 3, 0)
-        background = Color.black
     }
 
     override fun paint(g: Graphics) {
@@ -28,7 +29,12 @@ class NextQueue(private val nextQueue: ArrayDeque<Piece>) : JPanel() {
             g.color = piece.color
 
             for ((xoff, yoff) in piece.getCells(RotationState.North)) {
-                g.fillRect((x + xoff) * CELL_SIZE / 2, (y * 3 + yoff + 3) * CELL_SIZE / 2, CELL_SIZE / 2, CELL_SIZE / 2)
+                g.fillRect(
+                    (x + xoff) * MINI_PIECE_CELL_SIZE,
+                    (y * 3 + yoff + 3) * MINI_PIECE_CELL_SIZE,
+                    MINI_PIECE_CELL_SIZE,
+                    MINI_PIECE_CELL_SIZE
+                )
             }
         }
     }
