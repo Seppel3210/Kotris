@@ -1,6 +1,7 @@
 package tetris
 
 import CELL_SIZE
+import GHOST_PIECE_OPACITY
 import java.awt.Color
 import java.awt.Graphics
 
@@ -131,7 +132,7 @@ class FallingPiece(val kind: Piece) {
             Piece.T -> CellColor.T.color
         }
 
-        g.color = Color(col.red, col.green, col.blue, 100)
+        g.color = Color(col.red, col.green, col.blue, GHOST_PIECE_OPACITY)
 
         ghostPiece.drawPiece(g)
     }

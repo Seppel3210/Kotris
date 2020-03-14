@@ -12,7 +12,7 @@ class Game : Canvas() {
 
     private val inputHandler = InputHandler()
 
-    private val board = Board(1)
+    private val board = Board(NEXT_QUEUE_SIZE)
     private var fallingPiece = FallingPiece(board.nextPiece)
     private var canHold = true
 
@@ -34,7 +34,7 @@ class Game : Canvas() {
         var updates = 0
         var frames = 0
 
-        createBufferStrategy(2)
+        createBufferStrategy(NUM_BUFFERS)
         bs = bufferStrategy
 
         //Game Loop
@@ -67,7 +67,7 @@ class Game : Canvas() {
     private var das = 0
 
     private fun tick() {
-        val gravity = 0.05 * if (inputHandler.softDrop) 40 else 1
+        val gravity = GRAVITY * if (inputHandler.softDrop) SOFT_DROP_MULTIPLIER else 1
         fallingPiece.update(gravity, board)
 
         if (inputHandler.hardDrop && !prevHardDrop) {
@@ -101,10 +101,10 @@ class Game : Canvas() {
             das = 0
         }
 
-        if (inputHandler.right && (das == 0 || das > 5)) {
+        if (inputHandler.right && (das == 0 || das > DAS)) {
             fallingPiece.move(1, 0, board)
         }
-        if (inputHandler.left && (das == 0 || das > 5)) {
+        if (inputHandler.left && (das == 0 || das > DAS)) {
             fallingPiece.move(-1, 0, board)
         }
 
