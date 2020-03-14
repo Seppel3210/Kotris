@@ -12,7 +12,7 @@ class Game : Canvas() {
 
     private val inputHandler = InputHandler()
 
-    private val board = Board(NEXT_QUEUE_SIZE)
+    val board = Board(NEXT_QUEUE_SIZE)
     private var fallingPiece = FallingPiece(board.nextPiece)
     private var canHold = true
 
@@ -25,6 +25,7 @@ class Game : Canvas() {
     }
 
     fun run() {
+        requestFocus()
         //Setup
         var lastTime = System.nanoTime()
         val amountOfTicks = FPS
@@ -77,6 +78,9 @@ class Game : Canvas() {
         if (canHold && inputHandler.hold && !prevHold) {
             fallingPiece = FallingPiece(board.hold(fallingPiece.kind))
             canHold = false
+
+            //update hold and nextQueue
+            parent.repaint()
         }
 
         handleInput()
@@ -87,6 +91,9 @@ class Game : Canvas() {
         board.lock(fallingPiece)
         fallingPiece = FallingPiece(board.nextPiece)
         canHold = true
+
+        //update nextQueue
+        parent.repaint()
     }
 
     private fun handleInput() {

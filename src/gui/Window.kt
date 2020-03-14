@@ -9,7 +9,5 @@ class Window(component: Component) : JFrame("Kotris") {
         pack()
         setLocationRelativeTo(null)
         isVisible = true
-
-        component.requestFocus()
     }
 }

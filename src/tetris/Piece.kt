@@ -72,6 +72,17 @@ enum class Piece(private val cellOffsets: Array<Array<Pair<Int, Int>>>) {
         }
         return cellOffsets[index]
     }
+
+    val color
+        get() = when (this) {
+            I -> CellColor.I.color
+            O -> CellColor.O.color
+            J -> CellColor.J.color
+            L -> CellColor.L.color
+            S -> CellColor.S.color
+            Z -> CellColor.Z.color
+            T -> CellColor.T.color
+        }
 }
 
 class FallingPiece(val kind: Piece) {
@@ -88,15 +99,7 @@ class FallingPiece(val kind: Piece) {
     private var yoff = 0.0
 
     fun render(g: Graphics) {
-        g.color = when (kind) {
-            Piece.I -> CellColor.I.color
-            Piece.O -> CellColor.O.color
-            Piece.J -> CellColor.J.color
-            Piece.L -> CellColor.L.color
-            Piece.S -> CellColor.S.color
-            Piece.Z -> CellColor.Z.color
-            Piece.T -> CellColor.T.color
-        }
+        g.color = kind.color
         drawPiece(g)
     }
 

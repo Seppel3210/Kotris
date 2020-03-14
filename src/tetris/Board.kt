@@ -9,9 +9,10 @@ import kotlin.collections.ArrayList
 class Board(private val nextQueueSize: Int) {
     private var cells: LinkedList<Row> = LinkedList(MutableList(40) { Row.EMPTY })
 
-    private val nextQueue = ArrayDeque<Piece>()
+    val nextQueue = ArrayDeque<Piece>()
 
-    private var holdPiece: Piece? = null
+    var holdPiece: Piece? = null
+        private set
 
     fun hold(piece: Piece): Piece {
         return if (holdPiece == null) {
@@ -41,7 +42,7 @@ class Board(private val nextQueueSize: Int) {
 
     val nextPiece: Piece
         get() {
-            while (nextQueue.size < nextQueueSize) {
+            while (nextQueue.size <= nextQueueSize) {
                 nextQueue.addAll(nextBag)
             }
             return nextQueue.removeFirst()
@@ -88,7 +89,7 @@ class Board(private val nextQueueSize: Int) {
                 toRemove.add(row)
             }
         }
-        repeat(toRemove.size) { cells.addFirst(  Row.EMPTY) }
+        repeat(toRemove.size) { cells.addFirst(Row.EMPTY) }
         cells.removeAll(toRemove)
     }
 }
