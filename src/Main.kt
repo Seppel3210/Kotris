@@ -14,10 +14,12 @@ const val GHOST_PIECE_OPACITY = 150
 
 const val GRAVITY = 0.05
 const val SOFT_DROP_MULTIPLIER = 40
+const val NEXT_QUEUE_SIZE = 20
 
 // Delay is in Frames
 const val DAS = 5
-const val NEXT_QUEUE_SIZE = 5
+const val LOCK_DELAY = 20
+const val FORCED_LOCK_DELAY = 20 * 60
 
 fun main() {
     val game = Game()

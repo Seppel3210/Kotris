@@ -103,7 +103,7 @@ class FallingPiece(val kind: Piece) {
         drawPiece(g)
     }
 
-    fun drawPiece(g: Graphics) {
+    private fun drawPiece(g: Graphics) {
         for (cell in cells)
             g.fillRect(
                 cell.first * CELL_SIZE,
@@ -113,6 +113,7 @@ class FallingPiece(val kind: Piece) {
             )
     }
 
+    @Suppress("unused")
     fun drawCenter(g: Graphics) {
         g.fillRect(
             x * CELL_SIZE,
@@ -151,6 +152,13 @@ class FallingPiece(val kind: Piece) {
             x -= xoff
             y -= yoff
         }
+    }
+
+    fun isTouchingGround(board: Board): Boolean {
+        y++
+        val touchingGround = board.obstructed(this)
+        y--
+        return touchingGround
     }
 
     fun drop(gravity: Double, board: Board) {

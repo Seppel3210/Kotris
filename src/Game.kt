@@ -7,14 +7,16 @@ import java.awt.Graphics
 import java.awt.image.BufferStrategy
 
 class Game : Canvas() {
-    private lateinit var bs: BufferStrategy
-    private val running = true
-
     private val inputHandler = InputHandler()
+    private lateinit var bs: BufferStrategy
+
+    private val running = true
 
     val board = Board(NEXT_QUEUE_SIZE)
     private var fallingPiece = FallingPiece(board.nextPiece)
     private var canHold = true
+    private var lockTimer = 0
+    private var forcedLockTimer = 0
 
     init {
         val size = Dimension(CELL_SIZE * 10, CELL_SIZE * 20)
@@ -75,6 +77,16 @@ class Game : Canvas() {
             lockPiece()
         }
 
+        forcedLockTimer++
+        if (fallingPiece.isTouchingGround(board)) {
+            lockTimer++
+            if (lockTimer > LOCK_DELAY || forcedLockTimer > FORCED_LOCK_DELAY) {
+                lockPiece()
+            }
+        } else {
+            lockTimer = 0
+        }
+
         if (canHold && inputHandler.hold && !prevHold) {
             fallingPiece = FallingPiece(board.hold(fallingPiece.kind))
             canHold = false
@@ -87,6 +99,9 @@ class Game : Canvas() {
     }
 
     private fun lockPiece() {
+        forcedLockTimer = 0
+        lockTimer = 0
+
         fallingPiece.drop(40.0, board)
         board.lock(fallingPiece)
         fallingPiece = FallingPiece(board.nextPiece)
@@ -110,17 +125,21 @@ class Game : Canvas() {
 
         if (inputHandler.right && (das == 0 || das > DAS)) {
             fallingPiece.move(1, 0, board)
+            lockTimer = 0
         }
         if (inputHandler.left && (das == 0 || das > DAS)) {
             fallingPiece.move(-1, 0, board)
+            lockTimer = 0
         }
 
         if (inputHandler.cw && !prevCw) {
             fallingPiece.cw(board)
+            lockTimer = 0
         }
 
         if (inputHandler.ccw && !prevCcw) {
             fallingPiece.ccw(board)
+            lockTimer = 0
         }
 
         prevLeft = inputHandler.left
