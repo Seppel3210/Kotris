@@ -31,7 +31,6 @@ class InputHandler : KeyAdapter() {
         private set
 
     var reset = false
-        private set
 
     override fun keyPressed(e: KeyEvent) {
         updateKeyState(e.keyCode, true)

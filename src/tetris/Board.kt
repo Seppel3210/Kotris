@@ -92,6 +92,12 @@ class Board(private val nextQueueSize: Int) {
         repeat(toRemove.size) { cells.addFirst(Row.EMPTY) }
         cells.removeAll(toRemove)
     }
+
+    fun reset() {
+        cells = LinkedList(MutableList(40) { Row.EMPTY })
+        nextQueue.clear()
+        holdPiece = null
+    }
 }
 
 private class Row private constructor(val cells: Array<CellColor>) {

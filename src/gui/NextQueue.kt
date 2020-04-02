@@ -11,7 +11,7 @@ import java.awt.Graphics
 import javax.swing.JPanel
 
 class NextQueue(board: Board) : JPanel() {
-    private val nextQueue = board.nextQueue
+    private var nextQueue = board.nextQueue
 
     init {
         preferredSize = Dimension(CELL_SIZE * 3, 0)

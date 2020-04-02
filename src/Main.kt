@@ -22,6 +22,7 @@ const val LOCK_DELAY = 20
 const val FORCED_LOCK_DELAY = 20 * 60
 
 fun main() {
+
     val game = Game()
     val nextQueue = NextQueue(game.board)
     val holdPiece = HoldPiece(game.board)
@@ -30,5 +31,8 @@ fun main() {
     windowContent.add(nextQueue, BorderLayout.EAST)
     windowContent.add(holdPiece, BorderLayout.WEST)
     Window(windowContent)
-    game.run()
+    do {
+        game.reset()
+        game.run()
+    } while (game.inputHandler.reset)
 }

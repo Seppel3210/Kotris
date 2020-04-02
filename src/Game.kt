@@ -7,12 +7,13 @@ import java.awt.Graphics
 import java.awt.image.BufferStrategy
 
 class Game : Canvas() {
-    private val inputHandler = InputHandler()
+    val inputHandler = InputHandler()
     private lateinit var bs: BufferStrategy
 
-    private var running = true
+    private var running = false
 
-    private var board = Board(NEXT_QUEUE_SIZE)
+    var board = Board(NEXT_QUEUE_SIZE)
+        private set
     private var fallingPiece = FallingPiece(board.nextPiece)
     private var canHold = true
     private var lockTimer = 0
@@ -27,6 +28,9 @@ class Game : Canvas() {
     }
 
     fun run() {
+        if (running) return
+
+        running = true
         requestFocus()
         //Setup
         var lastTime = System.nanoTime()
@@ -60,13 +64,21 @@ class Game : Canvas() {
         }
     }
 
-    private fun reset() {
-        board = Board(NEXT_QUEUE_SIZE)
+    fun reset() {
+        inputHandler.reset = false
+
+        board.reset()
+        fallingPiece = FallingPiece(board.nextPiece)
+        canHold = true
+        lockTimer = 0
+        forcedLockTimer = 0
+
+        parent.repaint()
     }
 
     private fun tick() {
         if (inputHandler.reset) {
-            reset()
+            running = false
         }
 
         val gravity = GRAVITY * if (inputHandler.softDrop) SOFT_DROP_MULTIPLIER else 1
