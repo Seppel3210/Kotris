@@ -10,9 +10,9 @@ class Game : Canvas() {
     private val inputHandler = InputHandler()
     private lateinit var bs: BufferStrategy
 
-    private val running = true
+    private var running = true
 
-    val board = Board(NEXT_QUEUE_SIZE)
+    private var board = Board(NEXT_QUEUE_SIZE)
     private var fallingPiece = FallingPiece(board.nextPiece)
     private var canHold = true
     private var lockTimer = 0
@@ -60,22 +60,17 @@ class Game : Canvas() {
         }
     }
 
-    private var prevLeft = false
-    private var prevRight = false
-    private var prevCw = false
-    private var prevCcw = false
-    private var prevHardDrop = false
-    private var prevHold = false
-
-    private var das = 0
+    private fun reset() {
+        board = Board(NEXT_QUEUE_SIZE)
+    }
 
     private fun tick() {
+        if (inputHandler.reset) {
+            reset()
+        }
+
         val gravity = GRAVITY * if (inputHandler.softDrop) SOFT_DROP_MULTIPLIER else 1
         fallingPiece.update(gravity, board)
-
-        if (inputHandler.hardDrop && !prevHardDrop) {
-            lockPiece()
-        }
 
         forcedLockTimer++
         if (fallingPiece.isTouchingGround(board)) {
@@ -85,14 +80,6 @@ class Game : Canvas() {
             }
         } else {
             lockTimer = 0
-        }
-
-        if (canHold && inputHandler.hold && !prevHold) {
-            fallingPiece = FallingPiece(board.hold(fallingPiece.kind))
-            canHold = false
-
-            //update hold and nextQueue
-            parent.repaint()
         }
 
         handleInput()
@@ -107,11 +94,33 @@ class Game : Canvas() {
         fallingPiece = FallingPiece(board.nextPiece)
         canHold = true
 
-        //update nextQueue
+        //update nextQueue visually
         parent.repaint()
     }
 
+    private var prevLeft = false
+    private var prevRight = false
+    private var prevCw = false
+    private var prevCcw = false
+    private var prevHardDrop = false
+    private var prevHold = false
+    private var prevR180 = false
+
+    private var das = 0
+
     private fun handleInput() {
+        if (inputHandler.hardDrop && !prevHardDrop) {
+            lockPiece()
+        }
+
+        if (canHold && inputHandler.hold && !prevHold) {
+            fallingPiece = FallingPiece(board.hold(fallingPiece.kind))
+            canHold = false
+
+            //update hold and nextQueue visually
+            parent.repaint()
+        }
+
         if (inputHandler.left || inputHandler.right) {
             das++
         }
@@ -142,12 +151,18 @@ class Game : Canvas() {
             lockTimer = 0
         }
 
+        if (inputHandler.r180 && !prevR180) {
+            fallingPiece.r180(board)
+            lockTimer = 0
+        }
+
         prevLeft = inputHandler.left
         prevRight = inputHandler.right
         prevCw = inputHandler.cw
         prevCcw = inputHandler.ccw
         prevHardDrop = inputHandler.hardDrop
         prevHold = inputHandler.hold
+        prevR180 = inputHandler.r180
     }
 
     private fun render() {

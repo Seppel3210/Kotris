@@ -180,11 +180,15 @@ class FallingPiece(val kind: Piece) {
         }
 
     fun cw(board: Board) {
-        rotate(rotationState, rotationState.cw(), board)
+        rotate(rotationState, rotationState.cw, board)
     }
 
     fun ccw(board: Board) {
-        rotate(rotationState, rotationState.ccw(), board)
+        rotate(rotationState, rotationState.ccw, board)
+    }
+
+    fun r180(board: Board) {
+        rotate(rotationState, rotationState.r180, board)
     }
 
     private fun rotate(currentState: RotationState, desiredState: RotationState, board: Board) {
@@ -251,21 +255,33 @@ class FallingPiece(val kind: Piece) {
 enum class RotationState {
     North, East, South, West;
 
-    fun cw(): RotationState {
-        return when (this) {
-            North -> East
-            East -> South
-            South -> West
-            West -> North
+    val cw: RotationState
+        get() {
+            return when (this) {
+                North -> East
+                East -> South
+                South -> West
+                West -> North
+            }
         }
-    }
 
-    fun ccw(): RotationState {
-        return when (this) {
-            North -> West
-            West -> South
-            South -> East
-            East -> North
+    val ccw: RotationState
+        get() {
+            return when (this) {
+                North -> West
+                West -> South
+                South -> East
+                East -> North
+            }
         }
-    }
+
+    val r180: RotationState
+        get() {
+            return when (this) {
+                North -> South
+                West -> East
+                South -> North
+                East -> West
+            }
+        }
 }
