@@ -45,9 +45,12 @@ class FallingPiece(val kind: Piece) {
     }
 
     var rotationState = RotationState.North
+    var tSpinStatus = TSpinStatus.None
 
     private var x = 4
     private var y = 17
+
+    // used to calculate gravity precisely
     private var yoff = 0.0
 
     fun render(g: Graphics) {
@@ -184,6 +187,7 @@ class FallingPiece(val kind: Piece) {
             else -> OFFSET_DATA
         }
         rotationState = desiredState
+        var success = false
         for (i in 0..4) {
             val xoff = data[currentI][i].first - data[desiredI][i].first
             val yoff = data[currentI][i].second - data[desiredI][i].second
@@ -191,9 +195,26 @@ class FallingPiece(val kind: Piece) {
             x += xoff
             y += yoff
             if (board.obstructed(this)) {
-                x -= xoff
-                y -= yoff
+                x = currentX
+                y = currentY
             } else {
+                if (kind == Piece.T) {
+                    val tSpinCorners =
+                        rotationState.tSpinCorners
+                            .map { if (board.occupied(x + it.first, y + it.second)) 1 else 0 }
+                            .sum()
+                    val tSpinMiniCorners =
+                        rotationState.tSpinMiniCorners
+                            .map { if (board.occupied(x + it.first, y + it.second)) 1 else 0 }
+                            .sum()
+                    if (tSpinCorners >= 3) {
+                        tSpinStatus =
+                            if (tSpinMiniCorners == 2 || i == 4)
+                                TSpinStatus.Full
+                            else
+                                TSpinStatus.Mini
+                    }
+                }
                 return
             }
         }
@@ -204,8 +225,26 @@ class FallingPiece(val kind: Piece) {
     }
 }
 
-enum class RotationState {
-    North, East, South, West;
+enum class TSpinStatus {
+    None, Full, Mini
+}
+
+enum class RotationState(val direction: Pair<Int, Int>) {
+    North(Pair(0, -1)), East(Pair(1, 0)), South(Pair(0, 1)), West(Pair(-1, 0));
+
+    val tSpinCorners: Array<Pair<Int, Int>>
+        get() = arrayOf(
+            1 to 1,
+            1 to -1,
+            -1 to 1,
+            -1 to -1
+        )
+
+    val tSpinMiniCorners: Array<Pair<Int, Int>>
+        get() = arrayOf(
+            Pair(direction.first + direction.second, direction.second + direction.first),
+            Pair(direction.first - direction.second, direction.second - direction.first)
+        )
 
     val cw: RotationState
         get() {

@@ -58,7 +58,7 @@ class Board(private val nextQueueSize: Int) {
 
     }
 
-    private fun occupied(x: Int, y: Int): Boolean {
+    fun occupied(x: Int, y: Int): Boolean {
         return x < 0 || y < 0 || x >= 10 || y >= 40 || cells[y].cells[x] != CellColor.Empty
     }
 
