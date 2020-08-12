@@ -1,8 +1,5 @@
-import gui.HoldPiece
-import gui.NextQueue
+import gui.PlayerGui
 import gui.Window
-import java.awt.BorderLayout
-import javax.swing.JPanel
 
 //config constants
 const val FPS = 60.0
@@ -26,13 +23,7 @@ const val FORCED_LOCK_DELAY = 20 * 60
 fun main() {
 
     val game = Game()
-    val nextQueue = NextQueue(game.board)
-    val holdPiece = HoldPiece(game.board)
-    val windowContent = JPanel(BorderLayout())
-    windowContent.add(game)
-    windowContent.add(nextQueue, BorderLayout.EAST)
-    windowContent.add(holdPiece, BorderLayout.WEST)
-    Window(windowContent)
+    Window(PlayerGui(game))
     do {
         game.reset()
         game.run()
