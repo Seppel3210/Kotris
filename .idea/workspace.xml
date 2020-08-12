@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b7f7dce-c19b-4b23-b443-b07b9f67c29f" name="Default Changelist" comment="Add Reset Feature">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/HoldPiece.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/HoldPiece.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/NextQueue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/NextQueue.kt" afterDir="false" />
+    <list default="true" id="3b7f7dce-c19b-4b23-b443-b07b9f67c29f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +107,7 @@
       <workItem from="1585918738573" duration="1278000" />
       <workItem from="1586006742828" duration="595000" />
       <workItem from="1597243936761" duration="2000" />
+      <workItem from="1597243957588" duration="498000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit with basic Tetris Functionality (Hard Drop, SRS, Hold Piece(no visualization))">
       <created>1584180159770</created>
@@ -181,11 +179,18 @@
       <option name="project" value="LOCAL" />
       <updated>1585827484284</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add config constant for &quot;mini pieces&quot; in previews and hold">
+      <created>1597244385397</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1597244385397</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -224,7 +229,8 @@
     <MESSAGE value="Add build artifact Kotris.jar" />
     <MESSAGE value="Refactor Keyboard Handling and add 180 spin" />
     <MESSAGE value="Add Reset Feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Reset Feature" />
+    <MESSAGE value="Add config constant for &quot;mini pieces&quot; in previews and hold" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add config constant for &quot;mini pieces&quot; in previews and hold" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
