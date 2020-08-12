@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b7f7dce-c19b-4b23-b443-b07b9f67c29f" name="Default Changelist" comment="">
+    <list default="true" id="3b7f7dce-c19b-4b23-b443-b07b9f67c29f" name="Default Changelist" comment="Add Reset Feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InputHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputHandler.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/HoldPiece.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/HoldPiece.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/NextQueue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/NextQueue.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/Board.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +35,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -71,7 +68,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="Kotris" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -109,7 +106,10 @@
       <workItem from="1584438271944" duration="7688000" />
       <workItem from="1584452131865" duration="265000" />
       <workItem from="1585822596048" duration="102000" />
-      <workItem from="1585822975763" duration="4419000" />
+      <workItem from="1585822975763" duration="5269000" />
+      <workItem from="1585918738573" duration="1278000" />
+      <workItem from="1586006742828" duration="595000" />
+      <workItem from="1597243936761" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit with basic Tetris Functionality (Hard Drop, SRS, Hold Piece(no visualization))">
       <created>1584180159770</created>
@@ -174,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585825628903</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add Reset Feature">
+      <created>1585827484284</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585827484284</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,9 +192,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -206,6 +211,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit with basic Tetris Functionality (Hard Drop, SRS, Hold Piece(no visualization))" />
@@ -217,54 +223,63 @@
     <MESSAGE value="Make falling pieces lock automatically when touching the ground for some time&#10;&#10;After 1/3 seconds of not rotating or moving the piece gets locked&#10;After 20 seconds the piece is forced to lock even if it moved recently" />
     <MESSAGE value="Add build artifact Kotris.jar" />
     <MESSAGE value="Refactor Keyboard Handling and add 180 spin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Keyboard Handling and add 180 spin" />
+    <MESSAGE value="Add Reset Feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Reset Feature" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="598" y="118" key="CommitChangelistDialog2" timestamp="1585827453884">
+    <state x="598" y="118" key="CommitChangelistDialog2" timestamp="1586007442437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="598" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585827453884" />
-    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1585827454006">
+    <state x="598" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586007442437" />
+    <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1586007455481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585827454006" />
-    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1585827454006">
+    <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586007455481" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1585828286890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585827454006" />
-    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1585827454006">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1585828286890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585827454006" />
-    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1585827454006">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1585828286890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585827454006" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1585826364222">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1585828286890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585826364222" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1585826364222">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1585828286891">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585826364222" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1585826364222">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286891" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1585828286890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585826364222" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1585826364222">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1585828286890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585826364222" />
-    <state x="668" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1585822978166">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1585828286890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585822978166" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
+    <state x="668" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1586007418273">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586007418273" />
     <state x="771" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585825300258">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="771" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585825300258" />
+    <state x="342" y="247" key="new project wizard" timestamp="1585828273012">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="247" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585828273012" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585825444518">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

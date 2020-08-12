@@ -14,7 +14,7 @@ class NextQueue(board: Board) : JPanel() {
     private var nextQueue = board.nextQueue
 
     init {
-        preferredSize = Dimension(CELL_SIZE * 3, 0)
+        preferredSize = Dimension(MINI_PIECE_CELL_SIZE * 5, 0)
     }
 
     override fun paint(g: Graphics) {
