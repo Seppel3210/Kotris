@@ -70,7 +70,7 @@ class Board(private val nextQueueSize: Int) {
         return false
     }
 
-    fun lock(piece: FallingPiece) {
+    fun lock(piece: FallingPiece): LockResult {
         val cellColor = when (piece.kind) {
             Piece.I -> CellColor.I
             Piece.O -> CellColor.O
@@ -91,6 +91,7 @@ class Board(private val nextQueueSize: Int) {
         }
         repeat(toRemove.size) { cells.addFirst(Row.EMPTY) }
         cells.removeAll(toRemove)
+        return LockResult(toRemove.size, piece.tSpinStatus)
     }
 
     fun reset() {
@@ -130,3 +131,5 @@ enum class CellColor(val color: Color) {
     Unclearable(Color.gray),
     Empty(Color(0, true))
 }
+
+class LockResult(val LinesCleared: Int, val tSpinStatus: TSpinStatus)
