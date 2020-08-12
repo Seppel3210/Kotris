@@ -5,72 +5,24 @@ import GHOST_PIECE_OPACITY
 import java.awt.Color
 import java.awt.Graphics
 
-enum class Piece(private val cellOffsets: Array<Array<Pair<Int, Int>>>) {
-    I(
-        arrayOf(
-            arrayOf(Pair(-1, 0), Pair(0, 0), Pair(1, 0), Pair(2, 0)),
-            arrayOf(Pair(0, -1), Pair(0, 0), Pair(0, 1), Pair(0, 2)),
-            arrayOf(Pair(-2, 0), Pair(-1, 0), Pair(0, 0), Pair(1, 0)),
-            arrayOf(Pair(0, -2), Pair(0, -1), Pair(0, 0), Pair(0, 1))
-        )
-    ),
-    O(
-        arrayOf(
-            arrayOf(Pair(0, -1), Pair(1, -1), Pair(1, 0), Pair(0, 0)),
-            arrayOf(Pair(0, 0), Pair(1, 0), Pair(1, 1), Pair(0, 1)),
-            arrayOf(Pair(-1, 0), Pair(0, 0), Pair(0, 1), Pair(-1, 1)),
-            arrayOf(Pair(-1, -1), Pair(0, -1), Pair(0, 0), Pair(-1, 0))
-        )
-    ),
-    J(
-        arrayOf(
-            arrayOf(Pair(-1, -1), Pair(-1, 0), Pair(0, 0), Pair(1, 0)),
-            arrayOf(Pair(0, 1), Pair(0, 0), Pair(0, -1), Pair(1, -1)),
-            arrayOf(Pair(-1, 0), Pair(0, 0), Pair(1, 0), Pair(1, 1)),
-            arrayOf(Pair(-1, 1), Pair(0, 1), Pair(0, 0), Pair(0, -1))
-        )
-    ),
-    L(
-        arrayOf(
-            arrayOf(Pair(-1, 0), Pair(0, 0), Pair(1, 0), Pair(1, -1)),
-            arrayOf(Pair(0, -1), Pair(0, 0), Pair(0, 1), Pair(1, 1)),
-            arrayOf(Pair(-1, 1), Pair(-1, 0), Pair(0, 0), Pair(1, 0)),
-            arrayOf(Pair(-1, -1), Pair(0, -1), Pair(0, 0), Pair(0, 1))
-        )
-    ),
-    S(
-        arrayOf(
-            arrayOf(Pair(-1, 0), Pair(0, 0), Pair(0, -1), Pair(1, -1)),
-            arrayOf(Pair(0, -1), Pair(0, 0), Pair(1, 0), Pair(1, 1)),
-            arrayOf(Pair(-1, 1), Pair(0, 1), Pair(0, 0), Pair(1, 0)),
-            arrayOf(Pair(-1, -1), Pair(-1, 0), Pair(0, 0), Pair(0, 1))
-        )
-    ),
-    Z(
-        arrayOf(
-            arrayOf(Pair(-1, -1), Pair(0, -1), Pair(0, 0), Pair(1, 0)),
-            arrayOf(Pair(1, -1), Pair(1, 0), Pair(0, 0), Pair(0, 1)),
-            arrayOf(Pair(-1, 0), Pair(0, 0), Pair(0, 1), Pair(1, 1)),
-            arrayOf(Pair(0, -1), Pair(0, 0), Pair(-1, 0), Pair(-1, 1))
-        )
-    ),
-    T(
-        arrayOf(
-            arrayOf(Pair(-1, 0), Pair(0, -1), Pair(1, 0), Pair(0, 0)),
-            arrayOf(Pair(0, -1), Pair(1, 0), Pair(0, 1), Pair(0, 0)),
-            arrayOf(Pair(1, 0), Pair(0, 1), Pair(-1, 0), Pair(0, 0)),
-            arrayOf(Pair(0, 1), Pair(-1, 0), Pair(0, -1), Pair(0, 0))
-        )
-    );
+enum class Piece(private val cellOffsets: Array<Pair<Int, Int>>) {
+    I(arrayOf(Pair(-1, 0), Pair(0, 0), Pair(1, 0), Pair(2, 0))),
+    O(arrayOf(Pair(0, -1), Pair(1, -1), Pair(1, 0), Pair(0, 0))),
+    J(arrayOf(Pair(-1, -1), Pair(-1, 0), Pair(0, 0), Pair(1, 0))),
+    L(arrayOf(Pair(-1, 0), Pair(0, 0), Pair(1, 0), Pair(1, -1))),
+    S(arrayOf(Pair(-1, 0), Pair(0, 0), Pair(0, -1), Pair(1, -1))),
+    Z(arrayOf(Pair(-1, -1), Pair(0, -1), Pair(0, 0), Pair(1, 0))),
+    T(arrayOf(Pair(-1, 0), Pair(0, -1), Pair(1, 0), Pair(0, 0)));
 
     fun getCells(rotationState: RotationState): Array<Pair<Int, Int>> {
-        val index = when (rotationState) {
-            RotationState.North -> 0
-            RotationState.East -> 1
-            RotationState.South -> 2
-            RotationState.West -> 3
-        }
-        return cellOffsets[index]
+        return cellOffsets.map {
+            when (rotationState) {
+                RotationState.North -> it
+                RotationState.East -> Pair(-it.second, it.first)
+                RotationState.South -> Pair(-it.first, -it.second)
+                RotationState.West -> Pair(it.second, -it.first)
+            }
+        }.toTypedArray()
     }
 
     val color

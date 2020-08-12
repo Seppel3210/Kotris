@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b7f7dce-c19b-4b23-b443-b07b9f67c29f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetris/Piece.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/Piece.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +108,7 @@
       <workItem from="1585918738573" duration="1278000" />
       <workItem from="1586006742828" duration="595000" />
       <workItem from="1597243936761" duration="2000" />
-      <workItem from="1597243957588" duration="498000" />
+      <workItem from="1597243957588" duration="2477000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit with basic Tetris Functionality (Hard Drop, SRS, Hold Piece(no visualization))">
       <created>1584180159770</created>
@@ -186,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597244385397</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add .gitignore">
+      <created>1597244483798</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1597244483798</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,66 +238,15 @@
     <MESSAGE value="Refactor Keyboard Handling and add 180 spin" />
     <MESSAGE value="Add Reset Feature" />
     <MESSAGE value="Add config constant for &quot;mini pieces&quot; in previews and hold" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add config constant for &quot;mini pieces&quot; in previews and hold" />
+    <MESSAGE value="Add .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add .gitignore" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="598" y="118" key="CommitChangelistDialog2" timestamp="1586007442437">
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1597244482618">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="598" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586007442437" />
-    <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1586007455481">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586007455481" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1585828286890">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1585828286890">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1585828286890">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1585828286890">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1585828286891">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286891" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1585828286890">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1585828286890">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1585828286890">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585828286890" />
-    <state x="668" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1586007418273">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="668" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586007418273" />
-    <state x="771" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585825300258">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="771" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585825300258" />
-    <state x="342" y="247" key="new project wizard" timestamp="1585828273012">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="342" y="247" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585828273012" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585825444518">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585825444518" />
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1597244482618" />
   </component>
   <component name="masterDetails">
     <states>
