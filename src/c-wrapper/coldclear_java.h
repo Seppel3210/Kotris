@@ -21,14 +21,14 @@ JNIEXPORT jlong JNICALL Java_ColdClear_ccLaunchAsync
  * Signature: (JJJII)J
  */
 JNIEXPORT jlong JNICALL Java_ColdClear_ccLaunchWithBoardAsync
-  (JNIEnv *, jobject, jlong, jlong, jlong, jint, jint);
+  (JNIEnv *, jobject, jlong, jlong, jlong, jint, jint, jboolean, jint);
 
 /*
  * Class:     ColdClear
  * Method:    ccDestroyAsync
  * Signature: (J)J
  */
-JNIEXPORT jlong JNICALL Java_ColdClear_ccDestroyAsync
+JNIEXPORT void JNICALL Java_ColdClear_ccDestroyAsync
   (JNIEnv *, jobject, jlong);
 
 /*

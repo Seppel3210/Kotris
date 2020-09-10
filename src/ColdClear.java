@@ -6,9 +6,9 @@ public final class ColdClear {
 
     private native long ccLaunchAsync(long options_ptr, long weights_ptr);
 
-    private native long ccLaunchWithBoardAsync(long options_ptr, long weights_ptr, long field_ptr, int bag_remain, int hold);
+    private native long ccLaunchWithBoardAsync(long options_ptr, long weights_ptr, long field_ptr, int bag_remain, int hold, boolean b2b, int combo);
 
-    private native long ccDestroyAsync(long bot_ptr);
+    private native void ccDestroyAsync(long bot_ptr);
 
     private native void ccResetAsync(long bot_ptr, long field_ptr, boolean b2b, int combo);
 
