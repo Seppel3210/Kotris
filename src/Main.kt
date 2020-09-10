@@ -1,5 +1,6 @@
 import gui.PlayerGui
 import gui.Window
+import javax.swing.JPanel
 
 //config constants
 const val FPS = 60.0
@@ -21,11 +22,23 @@ const val FORCED_LOCK_DELAY = 20 * 60
 //constants for input handling in InputHandler.kt
 
 fun main() {
-
     val game = Game()
-    Window(PlayerGui(game))
-    do {
-        game.reset()
-        game.run()
-    } while (game.inputHandler.reset)
+    val game2 = Game()
+    val content = JPanel()
+    content.add(PlayerGui(game))
+    content.add(PlayerGui(game2))
+    Window(content)
+    Thread {
+        do {
+            game.reset()
+            game.run()
+        } while (game.inputHandler.reset)
+    }.start()
+    Thread {
+        do {
+            game2.reset()
+            game2.run()
+        } while (game2.inputHandler.reset)
+    }.start()
+    ColdClear()
 }
