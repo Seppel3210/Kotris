@@ -4,21 +4,21 @@ import tetris.TSpinStatus;
 public final class ColdClear {
     private final long ccPtr;
 
-    private native long ccLaunchAsync(long var1, long var3);
+    private native long ccLaunchAsync(long options_ptr, long weights_ptr);
 
-    private native long ccLaunchWithBoardAsync(long var1, long var3, long var5, int var7, int var8);
+    private native long ccLaunchWithBoardAsync(long options_ptr, long weights_ptr, long field_ptr, int bag_remain, int hold);
 
-    private native long ccDestroyAsync(long var1);
+    private native long ccDestroyAsync(long bot_ptr);
 
-    private native void ccResetAsync(long var1, long var3, boolean var5, int var6);
+    private native void ccResetAsync(long bot_ptr, long field_ptr, boolean b2b, int combo);
 
-    private native void ccAddNextPieceAsync(long var1, int var3);
+    private native void ccAddNextPieceAsync(long bot_ptr, int piece);
 
-    private native void ccRequestNextMove(long var1, int var3);
+    private native void ccRequestNextMove(long bot_ptr, int incoming);
 
-    private native int ccPollNextMove(long var1);
+    private native int ccPollNextMove(long bot_ptr);
 
-    private native int ccBlockNextMove(long var1);
+    private native int ccBlockNextMove(long bot_ptr);
 
     private native long ccDefaultOptions();
 
